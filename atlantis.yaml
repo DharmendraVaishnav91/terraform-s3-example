@@ -1,0 +1,30 @@
+version: 3
+automerge: true
+projects:
+- name: learn-terraform
+  dir: .
+  workspace: default
+  terraform_version: v0.13.1
+  autoplan:
+    when_modified: ["*.tf", "../modules/**.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - run
+      - init
+      - plan:
+          extra_args: ["-lock", "false"]
+      - run
+    apply:
+      steps:
+      - run: echo hi
+      - apply
+slack-token: "mBMSOJqy12VePNEae5HvoDYh"
+webhooks:
+    - event: plan
+      kind: slack
+      channel: devops
