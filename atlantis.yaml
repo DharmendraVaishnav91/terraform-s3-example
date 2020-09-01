@@ -14,11 +14,11 @@ workflows:
   myworkflow:
     plan:
       steps:
-      - run
+      - run: echo "Dharmendra plan start"
       - init
       - plan:
           extra_args: ["-lock", "false"]
-      - run
+      - run: echo "dharmendra plan end"
     apply:
       steps:
       - run: echo hi
