@@ -9,9 +9,9 @@ projects:
     when_modified: ["*.tf", "../modules/**.tf"]
     enabled: true
   apply_requirements: [mergeable, approved]
-  workflow: myworkflow
+  workflow: customworkflow
 workflows:
-  myworkflow:
+  customworkflow:
     plan:
       steps:
       - run: echo "Dharmendra plan start"
