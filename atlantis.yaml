@@ -14,10 +14,8 @@ workflows:
   myworkflow:
     plan:
       steps:
-      - run: echo "Start plan"
       - init
       - plan
-      - run: "End plan"
     apply:
       steps:
       - run: echo hi
