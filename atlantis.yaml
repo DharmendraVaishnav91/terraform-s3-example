@@ -18,5 +18,5 @@ workflows:
       - plan
     apply:
       steps:
-      - run: echo slack
+      - run: echo slackstart
       - apply
