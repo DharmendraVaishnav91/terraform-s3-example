@@ -20,31 +20,31 @@ module "vpc" {
   tags = var.vpc_tags
 }
 
-module "ec2_instances" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.12.0"
+# module "ec2_instances" {
+#   source  = "terraform-aws-modules/ec2-instance/aws"
+#   version = "2.12.0"
 
-  name           = "my-ec2-cluster"
-  instance_count = 2
+#   name           = "my-ec2-cluster"
+#   instance_count = 1
 
-  ami                    = "ami-0c5204531f799e0c6"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [module.vpc.default_security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
+#   ami                    = "ami-0c5204531f799e0c6"
+#   instance_type          = "t2.micro"
+#   vpc_security_group_ids = [module.vpc.default_security_group_id]
+#   subnet_id              = module.vpc.public_subnets[0]
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
+#   tags = {
+#     Terraform   = "true"
+#     Environment = "dev"
+#   }
+# }
 
-module "website_s3_bucket" {
-  source = "./modules/aws-s3-static-website-bucket"
+# module "website_s3_bucket" {
+#   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "test-dv-terraform-new"
+#   bucket_name = "test-dv-terraform-new"
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
+#   tags = {
+#     Terraform   = "true"
+#     Environment = "dev"
+#   }
+# }
