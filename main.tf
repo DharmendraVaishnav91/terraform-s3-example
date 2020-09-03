@@ -41,7 +41,7 @@ module "ec2_instances" {
 module "website_s3_bucket" {
   source = "./modules/aws-s3-static-website-bucket"
 
-  bucket_name = "test-dv-terraform"
+  bucket_name = "test-dv-terraform-new"
 
   tags = {
     Terraform   = "true"
