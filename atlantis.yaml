@@ -1,0 +1,24 @@
+version: 3
+automerge: false
+projects:
+- name: demo-atlantis
+  dir: .
+  workspace: default
+  terraform_version: v0.13.1
+  autoplan:
+    when_modified: ["*.tf", "../modules/**.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - run: echo "Start plan"
+      - init
+      - plan
+      - run: "End plan"
+    apply:
+      steps:
+      - run: echo hi
+      - apply
