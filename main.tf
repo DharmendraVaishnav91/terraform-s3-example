@@ -1,7 +1,7 @@
 # Terraform configuration
 
 provider "aws" {
-  region = "us-west-2"
+  region = "ap-south-1"
 }
 
 # module "vpc" {
@@ -38,13 +38,13 @@ provider "aws" {
 #   }
 # }
 
-# module "website_s3_bucket" {
-#   source = "./modules/aws-s3-static-website-bucket"
+module "website_s3_bucket" {
+  source = "./modules/aws-s3-static-website-bucket"
 
-#   bucket_name = "test-dv-terraform-new"
+  bucket_name = "dv-terraform-new"
 
-#   tags = {
-#     Terraform   = "true"
-#     Environment = "dev"
-#   }
-# }
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
