@@ -1,0 +1,22 @@
+version: 3
+automerge: false
+projects:
+- name: demo-atlantis
+  dir: .
+  workspace: default
+  terraform_version: v0.13.1
+  autoplan:
+    when_modified: ["*.tf", "../modules/**.tf"]
+    enabled: true
+  apply_requirements: [mergeable]
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - init
+      - plan
+    apply:
+      steps:
+      - run: echo slackstart
+      - apply
